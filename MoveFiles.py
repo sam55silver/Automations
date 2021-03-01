@@ -1,37 +1,39 @@
-from watchdog.observers import Observer
-from watchdog.events import FileSystemEventHandler
-
-import os
-import json
 import time
+import os
+from watchdog.observers import Observer
+from watchdog.events import PatternMatchingEventHandler
+
+if __name__ == "__main__":
+    patterns = "*"
+    ignore_patterns = ""
+    ignore_directories = False
+    case_sensitive = False
+    my_event_handler = PatternMatchingEventHandler(
+        patterns, ignore_patterns, ignore_directories, case_sensitive)
 
 
-class MyHandler(FileSystemEventHandler):
-    def on_modified(self, event):
-        for filename in os.listdir(folder_to_track):
-            src = folder_to_track + "/" + filename
-            # Insert file into images folder
-            if filename.lower().endswith('.jpg'):
-                new_destination = folder_images + "/" + filename
-                os.rename(src, new_destination)
-            # Insert File into document folder
-            elif filename.lower().endswith('.pdf'):
-                new_destination = folder_documents + "/" + filename
-                os.rename(src, new_destination)
+def on_modified(event):
+    filename = event.src_path.replace(folder_to_track, "")
+    destination = folder_documents + filename
+    os.rename(event.src_path, destination)
+    print(f"Moved {filename} to {destination}")
 
 
-folder_to_track = "/Users/sam/Desktop/myFolder"
-folder_images = "/Users/sam/Desktop/images"
-folder_documents = "/Users/sam/Desktop/documents"
-folder_destination = "/Users/sam/Desktop/newFolder"
-event_handler = MyHandler()
-observer = Observer()
-observer.schedule(event_handler, folder_to_track, recursive=True)
-observer.start()
+my_event_handler.on_modified = on_modified
 
+folder_to_track = "D:\\Development\\Test\\myFolder"
+folder_images = "D:\\Development\\Test\\images"
+folder_documents = "D:\\Development\\Test\\documents"
+
+go_recursively = True
+my_observer = Observer()
+my_observer.schedule(my_event_handler, folder_to_track,
+                     recursive=go_recursively)
+
+my_observer.start()
 try:
     while True:
-        time.sleep(10)
+        time.sleep(1)
 except KeyboardInterrupt:
-    observer.stop()
-observer.join()
+    my_observer.stop()
+    my_observer.join()
