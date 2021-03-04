@@ -23,4 +23,4 @@ It seems that copying and pasting files into the path causes watchdog to try and
 
 This program will change you background image to the NASA pic of the day! Majority of the code was taken from https://www.youtube.com/watch?v=VLNcnROUTb8&t=499s&ab_channel=PythonEngineer
 
-I plan on setting this code ot launch every time I log into my laptop!
+I plan on setting this code to launch every time I log into my laptop!
