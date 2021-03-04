@@ -4,6 +4,8 @@ Automating regular life tasks... By Sam Silver
 
 ## MoveFiles.py
 
+For organizing/unclutter your downloads folder! This program will separate all files in a specified location into folders with titles with the hopes of making your folder a tiny bit prettier.
+
 ### Version 2.0: March 3, 2021
 
 **commit: 87d34d237aefc1085c0140e80325bca4fc4a0648**
@@ -16,3 +18,9 @@ Using watchdog module I was able to observe a single path and move files to othe
 
 **_Known Bug_**
 It seems that copying and pasting files into the path causes watchdog to try and move it multiple times, this causes an error as it tries to move a file that does not exist as it has "already moved it". With some research I concluded that the file is not fully being copied over but watchdog is so fast it just moves half of the file size to the destination. Seems like this could be fixed by implementing a variable tracking the file size and then executing the move once it is fully copied over.
+
+## nasaPicOfDay.py
+
+This program will change you background image to the NASA pic of the day! Majority of the code was taken from https://www.youtube.com/watch?v=VLNcnROUTb8&t=499s&ab_channel=PythonEngineer
+
+I plan on setting this code ot launch every time I log into my laptop!
