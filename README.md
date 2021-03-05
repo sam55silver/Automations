@@ -24,3 +24,9 @@ It seems that copying and pasting files into the path causes watchdog to try and
 This program will change you background image to the NASA pic of the day! Majority of the code was taken from https://www.youtube.com/watch?v=VLNcnROUTb8&t=499s&ab_channel=PythonEngineer
 
 I plan on setting this code to launch every time I log into my laptop!
+
+## BitcoinTracker.py
+
+This program checks the price of bitcoin every 5 minutes. If it is lower than a certain threshold then send a notification to ITFFF (App on my phone)
+
+It is very simple at this point but there is a lot more I could do with this program... potentially a project for later.
